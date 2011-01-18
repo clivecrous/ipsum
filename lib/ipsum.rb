@@ -34,3 +34,9 @@ class Ipsum
   end
 
 end
+
+class Fixnum
+  def sentences
+    Ipsum.sentences( self )
+  end
+end
