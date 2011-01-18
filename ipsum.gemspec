@@ -8,9 +8,9 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Clive Crous"]
   s.email       = ["clive@crous.co.za"]
-  s.homepage    = "http://rubygems.org/gems/ipsum"
+  s.homepage    = "http://www.darkarts.co.za/ipsum"
   s.summary     = %q{Quickly generate text-like filler ala Lorem Ipsum}
-  s.description = %q{Generate words or sentences for filler text while developing anything which requires text. Most people know this as "Lorem Ipsum"}
+  s.description = %q{Generate words or sentences for filler text while developing anything which requires text. Most people know this as "Lorem Ipsum". eg: require 'ipsum'; puts 10.sentences}
 
   s.rubyforge_project = "ipsum"
 
