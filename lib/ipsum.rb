@@ -1,6 +1,9 @@
+# :main: README.rdoc
+# :title: Ipsum Documentation
+
 require 'ipsum/version'
 
-class Ipsum
+class Ipsum # :nodoc: all
 
   MAX_CHUNKS = 10
 
@@ -36,7 +39,12 @@ class Ipsum
 end
 
 class Fixnum
+
+  # Generate filler text for this amount of sentences. For example:
+  #   12.sentences
+  #   5.sentences
   def sentences
     Ipsum.sentences( self )
   end
+
 end
