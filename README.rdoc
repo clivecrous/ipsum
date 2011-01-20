@@ -1,4 +1,4 @@
-Ipsum is a _filler-text_ generator much like the well known _Lorem Ipsum_. Ipsum can be used in any applications that require text from console applications to websites. For more information {visit Ipsum's website}[http://www.darkarts.co.za/ipsum].
+Ipsum is a _filler-text_ generator much like the well known <em>Lorem Ipsum</em>. Ipsum can be used in any applications that require text from console applications to websites. For more information {visit Ipsum's website}[http://www.darkarts.co.za/ipsum].
 
 == Installation
 
