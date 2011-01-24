@@ -12,8 +12,6 @@ Gem::Specification.new do |s|
   s.summary     = %q{Quickly generate text-like filler ala Lorem Ipsum}
   s.description = %q{Generate words or sentences for filler text while developing anything which requires text. Most people know this as "Lorem Ipsum". eg: require 'ipsum'; puts 10.sentences}
 
-  s.rubyforge_project = "ipsum"
-
   s.add_development_dependency "bundler", ">= 1.0.0"
   s.add_development_dependency "rake", ">= 0.8.7"
 
