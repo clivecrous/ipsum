@@ -24,7 +24,11 @@ class Ipsum # :nodoc: all
   end
 
   def self.dictionary( language = self.default_language )
-    require "ipsum/#{language}" unless @dictionaries[ language ]
+    begin
+      require "ipsum-#{language}" unless @dictionaries[ language ]
+    rescue LoadError
+      raise "Unable to find language \"#{language}\". Try: gem install ipsum-#{language}"
+    end
     @dictionaries[ language ]
   end
 
