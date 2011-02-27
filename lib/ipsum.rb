@@ -69,8 +69,8 @@ class Fixnum
   # Generate filler text for this amount of sentences. For example:
   #   12.sentences
   #   5.sentences
-  def sentences
-    Ipsum.sentences( self )
+  def sentences( language = Ipsum.default_language )
+    Ipsum.sentences( self, language )
   end
 
 end
