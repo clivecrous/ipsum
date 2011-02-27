@@ -3,3 +3,5 @@ doc/*
 *.gem
 .bundle
 *.swp
+Gemfile.lock
+vendor/*
