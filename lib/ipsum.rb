@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 # :main: README.rdoc
 # :title: Ipsum Documentation
 
@@ -5,35 +6,60 @@ require 'ipsum/version'
 
 class Ipsum # :nodoc: all
 
-  MAX_CHUNKS = 10
+  SEQUENCE_SIZE = 3
 
-  CHUNKS = [ %w|b c d f g h j k l m n p q r s t v w x y z st tr ch dr th sh gh|,
-             %w|a e i o u ou ae ai| ]
+  @dictionaries = {}
 
-  def self.word
-    chunks = 1 + rand(4)
-    chunks += 1 while chunks <= MAX_CHUNKS && rand(2) == 0
+  def self.add_dictionary( language, dictionary )
+    @default_language ||= language
+    @dictionaries[ language.to_sym ] = dictionary
+  end
 
-    chunkset_counter = chunks == 1 ? 1 : rand(2)
+  def self.default_language
+    @default_language ||= :english
+  end
 
-    word = ''
+  def self.default_language=( language )
+    @default_language = language
+  end
 
-    chunks.times do
-      chunkset = CHUNKS[ chunkset_counter % 2 ]
-      chunkset_counter += 1
-      word += chunkset[ rand( chunkset.length ) ]
+  def self.dictionary( language = self.default_language )
+    require "ipsum/#{language}" unless @dictionaries[ language ]
+    @dictionaries[ language ]
+  end
+
+  def self.letter_following( sequence, position, language = self.default_language )
+    dict = dictionary( language )
+    sequence_statistics = dictionary( language )[ sequence ][ position ]
+    if sequence_statistics
+      letters = '' 
+      sequence_statistics.each_pair do |character,amount|
+        letters << character*amount
+      end
+      letters[rand(letters.size)]
     end
-
-    word
-
   end
 
-  def self.sentence( words = rand(5) + 3 )
-    ( [ nil ] * words ).map{|n|self.word}.join(' ').capitalize + '.'
+  def self.word( language = self.default_language )
+    letter = nil
+    word = ''
+    until letter == "\n"
+      sequence = ''
+      SEQUENCE_SIZE.times do |enum|
+        sequence << word[-(SEQUENCE_SIZE-enum)] if word[-(SEQUENCE_SIZE-enum)]
+      end
+      letter = letter_following( sequence, word.size, language )
+      word += letter
+    end
+    word.strip
   end
 
-  def self.sentences( amount = rand(5) + 3 )
-    ( [ nil ] * amount ).map{|n|self.sentence}.join(' ')
+  def self.sentence( words = rand(5) + 3, language = self.default_language )
+    ( [ nil ] * words ).map{|n|self.word( language )}.join(' ').capitalize + '.'
+  end
+
+  def self.sentences( amount = rand(5) + 3, language = self.default_language )
+    ( [ nil ] * amount ).map{|n|self.sentence( rand(5) + 3, language )}.join(' ')
   end
 
 end
