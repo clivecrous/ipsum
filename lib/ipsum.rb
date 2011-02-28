@@ -16,7 +16,7 @@ class Ipsum # :nodoc: all
   end
 
   def self.default_language
-    @default_language ||= :english
+    @default_language ||= :latin
   end
 
   def self.default_language=( language )

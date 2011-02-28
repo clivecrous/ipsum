@@ -5,7 +5,7 @@ desc "Build dictionary"
 task :dictionary do
   require 'ipsum'
   dictionary = {}
-  File.readlines( '/usr/share/dict/british-english' ).each do |word|
+  File.readlines( './dictionaries/latin.txt' ).each do |word|
     letters = word.split('')
     sequence = ''
     letter_index = 0
